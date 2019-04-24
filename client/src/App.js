@@ -16,7 +16,8 @@ class App extends Component {
             <Link to="/">Home</Link>
             <Link to="/otherpage">Other Page</Link>
           </header>
-          <div style="margin-top:20mm;">
+          <div>
+          <br/><br/>
             <Route exact path="/" component={Fib} />
             <Route path="/otherpage" component={OtherPage} />
           </div>

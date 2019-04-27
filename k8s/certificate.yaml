@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: kube-saaranen-net-tls
+spec:
+  secretName: kube-saaranen-net
+  issuerRef: 
+    name: letsencrypt-prod
+    kind: ClusterIssuer 
+  commonName: kube.saaranen.net
+  dnsNames:
+    - kube.saaranen.net
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - kube.saaranen.net    

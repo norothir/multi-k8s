@@ -5,9 +5,16 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
 spec:
+  tls:
+    - hosts:
+      - kube.saaranen.net
+      secretName: kube-saaranen-net
   rules:
-    - http:
+    - host: kube.saaranen.net
+      http:
         paths:
           - path: /?(.*)
             backend:
